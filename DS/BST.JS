@@ -46,5 +46,28 @@ class BST {
     }
     return false;
   }
+  bfs() {
+    const data = [];
+    const queue = [];
+    let node = this.root;
+    queue.push(node);
+    while (queue.length > 0) {
+      node = queue.shift();
+      data.push(node.value);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+    return data;
+  }
+  dfsPreOrder() {
+    const data = [];
+    function traverse(node) {
+      data.push(node.value);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    }
+    traverse(this.root);
+    return data;
+  }
 }
 const myBST = new BST();
